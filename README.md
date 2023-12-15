@@ -1,6 +1,6 @@
 # Sitema de gestão escolar em Node.js e MongoDb
 #
-# Esse sistema foi feito para atender as necessidades do Centro de Capacitação do Adolescente de Americana pertencente a Diaconia Sâo Judas Tádeu
+# Esse sistema foi feito para atender as necessidades do Centro de Capacitação do Adolescente de Americana pertencente a Diaconia São Judas Tádeu
 #
 ------------------------------------------------------------------------------------------------------------
 # INTRUÇÕES
