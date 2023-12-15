@@ -2,9 +2,9 @@
 #
 # Esse sistema foi feito para atender as necessidades do Centro de Capacitação do Adolescente de Americana pertencente a Diaconia Sâo Judas Tádeu
 #
-#---------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 # INTRUÇÕES
-#---------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 # 1º Para usar o sistema execute o comando "npm i" no terminal na pasta do sistema
 # 2º Em seguida crie um arquivo .ENV que começa com o conteudo "CONNECTIONSTRING ="
 # 3º Entre em mongodb.com e criei um database
