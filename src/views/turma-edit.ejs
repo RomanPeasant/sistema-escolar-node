@@ -1,0 +1,143 @@
+<%- include('includes/head')%>
+    <%- include('includes/nav')%>
+
+
+        <section>
+            <div class="container pt-2 h-100">
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-6">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Editando turma: <%=turma.nome %>
+                                </h3>
+                                <%- include('includes/messages') %>
+                                    <form action="/admin/edit/turma/<%= turma._id %>" method="POST">
+                                        <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <% if(cursos.length> 0) { %>
+                                                    <div class="form-outline">
+                                                        <select class="select form-control-lg" name="cursoTurma">
+                                                            <option value="" disabled>Escolha uma opção</option>
+                                                            <option value="<%= turma.cursoTurma%>">
+                                                                <%= turma.cursoTurma %>
+                                                            </option>
+                                                            <% cursos.forEach(curso=> { %>
+                                                                <% if(curso.nomeCurso !=turma.cursoTurma) { %>
+                                                                    <option value="<%= curso.nomeCurso %>">
+                                                                        <%= curso.nomeCurso %>
+                                                                    </option>
+                                                                    <% }}); %>
+                                                        </select>
+                                                        <label class="form-label select-label">Curso</label>
+
+                                                    </div>
+
+                                                    <% } else { %>
+                                                        <p class="text-center lead">Não existem cursos.</p>
+                                                        <% } %>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <input value="<%=turma.turmaEmail %>" type="email" id="turmaEmail"
+                                                        name="turmaEmail" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="email">E-mail do professor</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <select class="select form-control-lg" name="diaTurma">
+                                                        <option value="" disabled>Escolha uma opção</option>
+                                                        <option value="<%= turma.diaTurma %>"><%= turma.diaTurma %></option>
+                                                        <option value="Segunda-Feira">Segunda-Feira</option>
+                                                        <option value="Terça-Feira">Terça-Feira </option>
+                                                        <option value="Quarta-Feira">Quarta-Feira </option>
+                                                        <option value="Quinta-Feira">Quinta-Feira </option>
+                                                        <option value="Sexta-Feira">Sexta-Feira </option>
+                                                    </select>
+                                                    <label class="form-label select-label">Dia da semana</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <input value="<%=turma.horarioInicio %>" type="time" id="time"
+                                                        name="horarioInicio" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="escola">Horário de inicio</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <input value="<%=turma.horarioFim %>" type="time" id="time"
+                                                        name="horarioFim" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="escola">Horário de
+                                                        encerramento</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <input value="<%=turma.codTurma %>" type="text" id="codTurma"
+                                                        name="codTurma" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="code">Código da turma</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2 pb-2">
+
+                                                <div class="form-outline">
+                                                    <input type="text" id="maxAlunos" name="maxAlunos"
+                                                        class="form-control form-control-lg" />
+                                                    <label class="form-label" for="code">Máximo de alunos</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-2 pb-2">
+                                                <div class="mt-4 pt-2">
+                                                    <input class="btn btn-primary btn-lg" type="submit"
+                                                        value="Editar Turma" />
+                                                </div>
+                                            </div>
+                                                <div class="col-md-2 mb-2 pb-2">
+                                                <div class="mt-4 pt-2">
+                                                    <a href="/">
+                                                        <input class="btn btn-danger btn-lg" value="Cancelar" type="cancel"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('includes/footer')%>

@@ -1,0 +1,278 @@
+<%- include('includes/head')%>
+    <%- include('includes/nav')%>
+
+
+        <section>
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-18 col-lg-12 col-xl-10">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Consultar Matricula</h3>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nome completo</h5>
+                                            <p class="card-text"><%-
+                                                    aluno.name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></p>
+                                            </div>
+
+                                        </div>
+                                    
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Código de Matricula</h5>
+                                                <p class="card-text"><%=aluno.codMatricula %></p>
+                                            </div>
+
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">RG</h5>
+                                                <p class="card-text"><%=aluno.RG %></p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">CPF</h5>
+                                                <p class="card-text"><%=aluno.CPF %></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-2">
+    
+                                                <div class="card-body">
+                                                    
+                                                    <% if(typeof aluno.nascimento ==='string' || aluno.nascimento instanceof String) { %>
+                                                    <h5 class="card-title">Data de Nascimento</h5>
+                                                    <p class="card-text"><%=aluno.nascimento %></p>
+                                                    <%} else { %>
+                                                        <% if(aluno && aluno.nascimento) { %>
+                                                            <p class="card-text"><%=aluno.nascimento.toLocaleDateString('pt-BR') %></p>
+                                                         <% } else { %>
+                                                            <p class="card-text">Nascimento não disponível</p>
+                                                         <% } %>
+                                                    <%}; %>
+                                                </div>
+    
+                                            </div>
+                                            <div class="col-md-6 mb-2">
+    
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Sexo</h5>
+                                                    <p class="card-text"><%=aluno.sexo %></p>
+                                                </div>
+    
+                                            </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Endereço</h5>
+                                                <p class="card-text"><%=aluno.endereco %> </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Número</h5>
+                                                <p class="card-text"><%=aluno.endereco_numero %></p>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Complemento</h5>
+                                                <p class="card-text"><%=aluno.endereco_complemento %> </p>
+                                            </div>
+
+                                        </div>
+                                    
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">CEP</h5>
+                                                <p class="card-text"><%=aluno.CEP %></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Cidade</h5>
+                                                <p class="card-text"><%=aluno.cidade %></p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Bairro</h5>
+                                                <p class="card-text"><%=aluno.bairro %> </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Tipo de moradia</h5>
+                                                <p class="card-text"><%=aluno.moradia %> </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <% if(aluno.nomePai){ %>
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Nome do Pai</h5>
+                                                <p class="card-text"> <%=aluno.nomePai %></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <% if(aluno.nomeMae){ %>
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Nome da Mãe</h5>
+                                                <p class="card-text"> <%=aluno.nomeMae %></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <% if(aluno.nomeResponsavel){ %>
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Nome do(a) Responsável</h5>
+                                                <p class="card-text"> <%=aluno.nomeResponsavel %></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Telefone 1</h5>
+                                                <p class="card-text"> <%=aluno.telefone1 %></p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2 pb-2">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Telefone 2</h5>
+                                                <p class="card-text"><%=aluno.telefone2 %> </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Escola</h5>
+                                            <p class="card-text"><%=aluno.escola %></p>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Periodo</h5>
+                                            <p class="card-text"><%=aluno.periodo %></p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Religião</h5>
+                                            <p class="card-text"><%=aluno.religiao %></p>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Escolaridade</h5>
+                                            <p class="card-text"><%=aluno.escolaridade %></p>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">1º Curso</h5>
+                                            <p class="card-text"><%=aluno.curso1 %></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Turma</h5>
+                                            <p class="card-text"><%=aluno.turma1 %></p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <% if(aluno.curso2){ %>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">2º Curso</h5>
+                                            <p class="card-text"><%=aluno.curso2 %></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Turma</h5>
+                                            <p class="card-text"><%=aluno.turma2 %></p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <% } %>
+
+                                    <br>
+                                    <div class="row d-flex align-items-center justify-content-center">
+                                    <div class="col-md-4 mt-4 pt-2 ">
+                                        <a href="/matricula/print/<%= aluno._id %>"><input class="btn btn-primary btn-lg" type="submit" value="Imprimir Matricula" />
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mt-4 pt-2 ">
+                                        <a href="/matricula/editar/<%= aluno._id %>"><input class="btn btn-primary btn-lg" type="submit" value="Editar Matricula" />
+                                        </a>
+                                    </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('includes/footer')%>

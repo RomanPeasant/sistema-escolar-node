@@ -1,0 +1,297 @@
+<!-- Em pdfFormat.ejs -->
+<html>
+
+<head>
+    <style>
+
+    body{
+        width: 21cm;
+        height: 29.7cm;
+        /* change the margins as you want them to be. */
+   } 
+   .matricula{
+        margin: 2mm 2mm 2mm 25mm; 
+    }
+
+
+        p {
+            font-size: large;
+        }
+
+        /* Adicione outros estilos conforme necessário */
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    
+    <section class="matricula">
+        Impresso em <% var date = new Date(); %>
+    <%= date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR') %>
+        <div class="container">
+            <div class=" justify-content-center align-items-center">
+                <br>
+                <div class="row ">
+                    <div class="col-md-10 ">
+                    <h1 class="text-center">Diaconia São Judas Tadeu</h1>
+                    <br>
+                    Centro de Capacitação Profissional do Adolescente
+                    <br>Armando Salles de Oliveira, 730 - Jardim Ipiranga. Telefone: (19) 3406-1567
+                    <br>
+                    
+                </div>
+                </div>
+                <hr class="hr" style=" border-top: 1px solid  rgb(0, 0, 0)" />
+
+
+                <div class="row">
+                    <div class="col-md-8 ">
+                        <h5 class="card-title">Nome completo</h5>
+                        <p class="card-text">
+                            <%= aluno.name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></p>
+    </div>
+    
+    <div class="col-md-2 ">
+            <h5 class="card-title">Nº de Matrícula</h5>
+            <p class="card-text"><%= aluno.codMatricula %></p>
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-4 ">
+            <h5 class="card-title">RG</h5>
+             <p class="card-text"><%= aluno.RG %></p>
+    </div>
+    <div class="col-md-4 ">
+            <h5 class="card-title">CPF</h5>
+            <p class="card-text"><%= aluno.CPF %></p>
+    </div>
+
+        <div class="col-md-4 ">
+            <% if(typeof aluno.nascimento ==='string' || aluno.nascimento instanceof String) { %>
+                <h5 class="card-title">Data de Nascimento</h5>
+                <p class="card-text"><%=aluno.nascimento %></p>
+                <%} else { %>
+                    <% if(aluno && aluno.nascimento) { %>
+                        <p class="card-text"><%=aluno.nascimento.toLocaleDateString('pt-BR') %></p>
+                     <% } else { %>
+                        <p class="card-text">Nascimento não disponível</p>
+                     <% } %>
+                <%}; %>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <h5 class="card-title">Endereço</h5>
+             <p class="card-text"><%= aluno.endereco %></p>
+    </div>
+    <div class="col-md-2  ">
+            <h5 class="card-title">Número</h5>
+            <p class="card-text"><%= aluno.endereco_numero %></p>
+    </div>
+        <div class="col-md-2  ">
+            <h5 class="card-title">Complemento</h5>
+             <p class="card-text"><%= aluno.endereco_complemento %></p>
+    </div>
+    <div class="col-md-2">
+            <h5 class="card-title">CEP</h5>
+            <p class="card-text"><%= aluno.CEP %></p>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <h5 class="card-title">Cidade</h5>
+             <p class="card-text"><%= aluno.cidade %></p>
+    </div>
+    <div class="col-md-2">
+            <h5 class="card-title">Bairro</h5>
+            <p class="card-text"><%= aluno.bairro %></p>
+    </div>
+        <div class="col-md-4 ">
+            <h5 class="card-title">Tipo de Moradia</h5>
+             <p class="card-text"><%= aluno.moradia %></p>
+    </div>
+</div>
+
+
+    <% if(aluno.nomePai){ %>
+        <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+            <h5 class="card-title">Nome do Pai</h5>
+            <p class="card-text"><%= aluno.nomePai %></p>
+        </div>
+    <% } %>
+
+    <% if(aluno.nomeMae){ %>
+            <div class="col-md-6 mb-2 pb-2">
+            <h5 class="card-title">Nome da Mãe</h5>
+            <p class="card-text"><%= aluno.nomeMae %></p>
+        </div>
+    </div>
+    <% } %>
+
+    <% if(aluno.nomeResponsavel){ %>
+        <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+            <h5 class="card-title">Nome do(a) Responsável</h5>
+            <p class="card-text"><%= aluno.nomeResponsavel %></p>
+        </div>
+    </div>
+    <% } %>
+</div>
+        <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+                    <h5 class="card-title">Telefone 1</h5>
+                    <p class="card-text"> <%=aluno.telefone1 %></p>
+
+            </div>
+            <div class="col-md-6 mb-2 pb-2">
+                    <h5 class="card-title">Telefone 2</h5>
+                    <p class="card-text"><%=aluno.telefone2 %> </p>
+    
+
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+                <h5 class="card-title">Escola</h5>
+                <p class="card-text"><%=aluno.escola %></p>
+            </div>
+            <div class="col-md-2 mb-2 pb-2">
+                <h5 class="card-title">Periodo</h5>
+                <p class="card-text"><%=aluno.periodo %></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+                <h5 class="card-title">Religião</h5>
+                <p class="card-text"><%=aluno.religiao %></p>
+            </div>
+            <div class="col-md-6 mb-2 pb-2">
+                <h5 class="card-title">Escolaridade</h5>
+                <p class="card-text"><%=aluno.escolaridade %></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+                <h5 class="card-title">1º Curso</h5>
+                <p class="card-text"><%=aluno.curso1 %></p>
+            </div>
+        <div class="col-md-2 mb-2 pb-2">
+                <h5 class="card-title">Turma</h5>
+                <p class="card-text"><%=aluno.turma1 %></p>
+            </div>
+            <div class="col-md-4 mb-2 pb-2">
+                <h5 class="card-title">Horário</h5>
+                <% turmas.forEach(turma=> { %>
+                    <% if(turma.codTurma==aluno.turma1) { %>
+                <p class="card-text"><%= turma.horarioInicio %> até <%= turma.horarioFim
+                    %> </p>
+                <% }}) %>
+            </div>
+        </div>
+
+    <% if(aluno.curso2){ %>
+        <div class="row">
+            <div class="col-md-2 mb-2 pb-2">
+                <h5 class="card-title">2º Curso</h5>
+                <p class="card-text"><%=aluno.curso2 %></p>
+            </div>
+
+        <div class="col-md-2 mb-2 pb-2">
+                <h5 class="card-title">Turma</h5>
+                <p class="card-text"><%=aluno.turma2 %></p>
+            </div>
+            <div class="col-md-2 mb-2 pb-2">
+                <h5 class="card-title">Horário</h5>
+                <% turmas.forEach(turma=> { %>
+                    <% if(turma.codTurma==aluno.turma2) { %>
+                <p class="card-text"><%= turma.horarioInicio %> até <%= turma.horarioFim
+                    %> </p>
+                <% }}) %>
+            </div>
+        </div>
+        
+        <% } %>
+<br>
+<br>
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-md-12 mb-2 pb-2">
+            <div class="card-body">
+                <hr class="hr" style="border-top:solid black" />
+                <h6 class="card-title">Assinatura do Responsável</h6>
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="hr" style=" border-top: 1px dashed  rgb(0, 0, 0)" />
+    <div class="row align-items-end justify-content-end pb-4">
+    <div class= "text-left">
+    Impresso em <% var date = new Date(); %>
+    <%= date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR') %>
+</div>
+</div>
+<div class="row" >
+    <div class="col-md-8 ">
+        <b>Nome completo: </b>
+        <%= aluno.name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4 ">
+   <b> Nº de Matrícula: </b> <%= aluno.codMatricula %>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-2 ">
+        <b> 1º Curso:</b>  <%=aluno.curso1 %></p>
+    </div>
+<div class="col-md-2 ">
+    <b> Turma:</b>  <%=aluno.turma1 %>
+    </div>
+    <div class="col-md-4 ">
+        <b>  Horário</b>  <% turmas.forEach(turma=> { %>
+            <% if(turma.codTurma==aluno.turma1) { %>
+                <%= turma.diaTurma %> das
+        <%= turma.horarioInicio %> até <%= turma.horarioFim%> 
+        <% }}) %>
+    </div>
+</div>
+    <% if(aluno.curso2){ %>
+        <div class="row">
+            <div class="col-md-2">
+       <b>2º Curso: </b><%=aluno.curso2 %>
+            </div>
+        <div class="col-md-2"> 
+            <b>Turma: </b><%=aluno.turma2 %>
+            </div>
+            <div class="col-md-4">
+                <b>  Horário</b>  <% turmas.forEach(turma=> { %>
+                    <% if(turma.codTurma==aluno.turma1) { %>
+                        <%= turma.diaTurma %> das
+                <%= turma.horarioInicio %> até <%= turma.horarioFim%> 
+                <% }}) %>
+            </div>
+
+        <% } %>
+</div>
+    <div class="row justify-content-center align-items-center text-center">
+        <div class="col-md-10 mb-2 pb-2">
+        <div class="card-body">
+            <hr class="hr" style="border-top:solid black" />
+            <h6 class="card-title">Assinatura do Funcionário</h6>
+        </div>
+    </div>
+   
+    </div>
+    <div class= "text-left" style="padding: 6px;">
+    Centro de Capacitação Profissional do Adolescente
+    <br>Armando Salles de Oliveira, 730 - Jardim Ipiranga. Telefone: (19) 3406-1567
+    <br>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

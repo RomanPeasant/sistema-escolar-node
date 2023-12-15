@@ -1,0 +1,425 @@
+<%- include('includes/head')%>
+    <%- include('includes/nav')%>
+
+
+        <section>
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-20 col-lg-14 col-xl-12">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Editando Matricula: <%= matricula.codMatricula %> </h3>
+                                <%- include('includes/messages') %>
+                                <form action="/matricula/editar/<%= matricula._id %>" method="POST">
+                                    <input type="hidden" name="_csrf" value=<%= csrfToken%>>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %> " type="text" id="name" class="form-control form-control-lg" name="name"/>
+                                                <label class="form-label" for="name">Nome Completo</label>
+                                            </div>
+
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.RG %>" type="text" id="RG" class="form-control form-control-lg" name="RG" />
+                                                <label class="form-label" for="RG">RG</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.CPF %>" type="text" id="CPF" class="form-control form-control-lg" name="CPF"/>
+                                                <label class="form-label" for="CPF">CPF</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 d-flex align-items-center">
+
+                                            <div class="form-outline datepicker w-100">
+                                                <input value="<%= matricula.nascimento %>" type="date" class="form-control form-control-lg" id="date" name="nascimento" />
+                                                <label for="date" class="form-label">Data de nascimento</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+
+                                            <h6 class="mb-2 pb-1">Sexo: </h6>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sexo" id="femaleGender" value="Feminino" <% if(matricula.sexo === "Feminino") { %>checked<% } %> />
+
+                                                <label class="form-check-label" for="femaleGender">Feminino</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sexo" id="maleGender" value="Masculino" <% if(matricula.sexo === "Masculino") { %>checked<% } %> />
+
+                                                <label class="form-check-label" for="maleGender">Masculino</label>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.endereco %>" type="text" id="endereço" class="form-control form-control-lg" name="endereco"/>
+                                                <label class="form-label" for="endereço">Endereço</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.endereco_numero %>" type="text" id="numero" class="form-control form-control-lg" name="endereco_numero"/>
+                                                <label class="form-label" for="numero">Número</label>
+                                            </div>
+
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.endereco_complemento %>" type="text" id="complemento" class="form-control form-control-lg" name="endereco_complemento"/>
+                                                <label class="form-label" for="complemento">Complemento</label>
+                                            </div>
+
+                                        </div>
+                                    
+                                        <div class="col-md-3 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.CEP %>" type="text" id="CEP" class="form-control form-control-lg" name="CEP"/>
+                                                <label class="form-label" for="CEP">CEP</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.cidade %>" type="tel" id="cidade" class="form-control form-control-lg" name="cidade" />
+                                                <label class="form-label" for="cidade">Cidade</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.bairro %>" type="text" id="bairro" class="form-control form-control-lg" name="bairro" />
+                                                <label class="form-label" for="bairro">Bairro</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <select class="select form-control-lg" name="moradia">
+                                                <option value="" disabled>Escolha uma opção</option>
+                                                <option value="<%= matricula.moradia %>"><%= matricula.moradia %></option>
+                                                <option value="Casa Própria">Casa Própria</option>
+                                                <option value="Aluguel">Aluguel</option>
+                                                <option value="Cedida">Cedida</option>
+                                                <option value="Outros">Outros</option>
+                                            </select>
+                                            <label class="form-label select-label">Tipo de moradia</label>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.nomePai %>" type="text" id="emailAddress" name="nomePai"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="nomePai">Nome do Pai</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.nomeMae %>" type="text" id="nomeMae" name="nomeMae"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="nomeMae">Nome da Mãe</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.nomeResponsavel %>" type="text" id="nomeResponsavel" name="nomeResponsavel"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="nomeResponsavel">Nome do Responsável*</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.telefone1 %>" type="tel" id="tel1" name="telefone1"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="telefone1">Telefone 1</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.telefone2 %>" type="tel" id="tel2" name="telefone2"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="telefone2">Telefone 2</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <input value="<%= matricula.escola %>" type="text" id="escola" name="escola"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="escola">Escola onde estuda</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <select class="select form-control-lg" name="periodo">
+                                                    <option value="" disabled>Escolha uma opção</option>
+                                                    <option value="<%= matricula.periodo %>"><%= matricula.periodo %></option>
+                                                    <option value="Matutino">Matutino</option>
+                                                    <option value="Vespertino">Vespertino</option>
+                                                    <option value="Integral">Integral</option>
+                                                    <option value="Outros">Outros</option>
+                                                </select>
+                                                <label class="form-label select-label">Periodo em que estuda</label>
+    
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    
+                                        <div class="col-md-6 mb-2p b-2">
+                                            <select class="select form-control-lg" name="religiao">
+                                                <option value="" disabled>Escolha uma opção</option>
+                                                <option value="<%= matricula.religiao %>"><%= matricula.religiao %></option>
+                                                <option value="Católica">Católica Apostólica Romana</option>
+                                                <option value="Ortodoxa">Católica Ortodoxa</option>
+                                                <option value="Batista">Batista</option>
+                                                <option value="4">Adventista</option>
+                                                <option value="5">Luterana</option>
+                                                <option value="6">Presbiteriana</option>
+                                                <option value="7">Metodista</option>
+                                                <option value="8">Congregacional</option>
+                                                <option value="9">Assembleia de Deus</option>
+                                                <option value="10">Congregação Cristã no Brasil</option>
+                                                <option value="11">Igreja Universal do Reino de Deus</option>
+                                                <option value="12">Evangelho quadrangular</option>
+                                                <option value="13">Deus é amor</option>
+                                                <option value="14">Maranata</option>
+                                                <option value="15">Testemunhas de Jeová</option>
+                                                <option value="16">Mórmon</option>
+                                                <option value="17">Espírita</option>
+                                                <option value="18">Umbanda</option>
+                                                <option value="19">Budismo</option>
+                                                <option value="20">Candomblé</option>
+                                                <option value="21">Judaísmo</option>
+                                                <option value="22">Islâmica</option>
+                                                <option value="23">Áteu</option>
+                                                <option value="24">Sem religião</option>
+            
+                                            </select>
+                                            <label class="form-label select-label">Religião</label>
+
+                                        </div>
+                                        <div class="col-md-6 mb-2 pb-2 ">
+                                            <select class="select form-control-lg" name="escolaridade">
+                                                <option value="" disabled>Escolha uma opção</option>
+                                                <option value="<%= matricula.escolaridade %>"><%= matricula.escolaridade %></option>
+                                                <option value="Cursando Ensino Fundamental">Cursando Ensino Fundamental</option>
+                                                <option value="Cursando Ensino Médio">Cursando Ensino Médio </option>
+                                                <option value="Ensino Médio Completo">Ensino Médio Completo</option>
+                                            </select>
+                                            <label class="form-label select-label">Escolaridade</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-5 mb-2 pb-2">
+
+                                            <% if(cursos.length> 0) { %>
+
+                                                <div class="form-outline">
+                                                    <select class="select form-control-lg" name="curso1">
+                                                        <option value="" disabled>Escolha uma opção</option>
+                                                        <% cursos.forEach(curso=> { %>
+
+                                                            <option value="<%= curso.nomeCurso %>"
+                                                                data-id="<%= curso._id %>">
+                                                                <%= curso.nomeCurso %>
+                                                            </option>
+
+                                                            <% }); %>
+                                                    </select>
+                                                    <label class="form-label select-label">1º Curso</label>
+
+                                                </div>
+
+                                                <% } else { %>
+                                                    <p class="text-center lead">Não existem cursos.</p>
+                                                    <% } %>
+
+                                        </div>
+
+                                        <div class="col-md-7 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <select class="select form-control-lg" name="turma1">
+                                                    <option value="" disabled>Escolha uma opção</option>
+
+                                                </select>
+                                                <label class="form-label" for="turma">Código da turma do 1º
+                                                    curso</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-5 mb-2 pb-2">
+
+                                            <% if(cursos.length> 0) { %>
+
+                                                <div class="form-outline">
+                                                    <select class="select form-control-lg" name="curso2">
+                                                        <option value="" disabled>Escolha uma opção</option>
+                                                        <option value="">Nenhum</option>
+                                                        <% cursos.forEach(curso=> { %>
+
+                                                            <option value="<%= curso.nomeCurso %>"
+                                                                data-id="<%= curso._id %>">
+                                                                <%= curso.nomeCurso %>
+                                                            </option>
+                                                            <option value="">
+                                                                Nenhum
+                                                            </option>
+
+                                                            <% }); %>
+
+
+                                                    </select>
+                                                    <label class="form-label select-label">2º Curso</label>
+
+                                                </div>
+
+                                                <% } else { %>
+                                                    <p class="text-center lead">Não existem cursos.</p>
+                                                    <% } %>
+
+                                        </div>
+
+                                        <div class="col-md-7 mb-2 pb-2">
+
+                                            <div class="form-outline">
+                                                <select class="select form-control-lg" name="turma2">
+                                                    <option value="" disabled>Escolha uma opção</option>
+                                                    <option value="">
+                                                        Nenhum
+                                                    </option>
+                                                </select>
+                                                <label class="form-label" for="turma2">Código da turma do 2º
+                                                    curso</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 pt-2">
+                                        <input class="btn btn-primary btn-lg" type="submit" value="Editar Matricula" />
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+              // Evento de mudança no seletor de cursos
+              $('select[name="curso1"], select[name="curso2"]').on('change', function () {
+                var cursoSelecionado = $(this).val();
+                var turmaSelect = $(this).closest('div.row').find('select[name^="turma"]');
+          
+                // Limpa as opções anteriores de turmas
+                turmaSelect.empty();
+                turmaSelect.append('<option value="" disabled>Carregando...</option>');
+          
+                // Faz a requisição para o servidor
+                fetch(`/getTurmas/${cursoSelecionado}`)
+                  .then(response => {
+                    if (!response.ok) {
+                      throw new Error('Resposta do servidor não foi OK');
+                    }
+                    return response.json();
+                  })
+                  .then(turmas => {
+                    // Limpa as opções de 'Carregando...'
+                    turmaSelect.empty();
+                    turmaSelect.append('<option value="" disabled>Escolha uma opção</option>');
+          
+                    // Adiciona as novas opções de turma
+                    turmas.forEach(turma => {
+                    if(turma.quantidadeAlunos < turma.maxAlunos){
+                      turmaSelect.append(`<option value="${turma.codTurma}">${turma.codTurma} | ${turma.diaTurma} |${turma.horarioInicio}-${turma.horarioFim} | Alunos: ${turma.quantidadeAlunos} / ${turma.maxAlunos} </option>`);
+                    }else{
+                      turmaSelect.append(`<option value="" disabled>${turma.codTurma} | ${turma.diaTurma} |${turma.horarioInicio}-${turma.horarioFim} | Alunos: ${turma.quantidadeAlunos} / ${turma.maxAlunos} </option>`);
+                    }
+                    });
+                  })
+                  .catch(error => {
+                    console.error('Erro ao buscar turmas:', error);
+                    turmaSelect.empty();
+                    turmaSelect.append('<option value="" disabled>Erro ao carregar turmas</option>');
+                  });
+              });
+            });
+          </script>
+
+        <%- include('includes/footer')%>
