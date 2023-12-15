@@ -2,17 +2,17 @@
 ### Bem-vindo ao Sistema de Gestão Escolar desenvolvido para atender às necessidades do Centro de Capacitação do Adolescente de Americana, pertencente à Diaconia São Judas Tadeu.
 
 # Visão Geral
-Este projeto é uma solução completa de gestão escolar construída utilizando tecnologias modernas como Node.js, Express, EJS, Webpack e MongoDB como banco de dados. 
-Ele oferece uma interface intuitiva e eficiente para atender às demandas específicas do Centro de Capacitação, simplificando processos administrativos e melhorando a experiência de gestão.
+- Este projeto é uma solução completa de gestão escolar construída utilizando tecnologias modernas como Node.js, Express, EJS, Webpack e MongoDB como banco de dados. 
+- Ele oferece uma interface intuitiva e eficiente para atender às demandas específicas do Centro de Capacitação, simplificando processos administrativos e melhorando a experiência de gestão.
 
 # Funcionalidades Principais
 
-Gestão de Alunos: Cadastre, edite e gerencie informações detalhadas dos alunos de forma eficiente.
-Controle de Turmas: Atribua alunos a turmas específicas, facilitando o acompanhamento e organização.
-Acesso Seguro: Garanta a segurança dos dados com autenticação e controle de acesso.
+- Gestão de Alunos: Cadastre, edite e gerencie informações detalhadas dos alunos de forma eficiente.
+- Controle de Turmas: Atribua alunos a turmas específicas, facilitando o acompanhamento e organização.
+- Acesso Seguro: Garanta a segurança dos dados com autenticação e controle de acesso.
 
 # Como Começar
-Para utilizar o sistema, siga os passos abaixo:
+### Para utilizar o sistema, siga os passos abaixo:
 
 1. Execute o comando npm i no terminal na pasta do sistema.
 2. Crie um arquivo .env com o conteúdo CONNECTIONSTRING = no início.
