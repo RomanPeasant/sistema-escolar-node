@@ -1,5 +1,5 @@
 # Sistema de Gestão Escolar em Node.js e MongoDB
-###Bem-vindo ao Sistema de Gestão Escolar desenvolvido para atender às necessidades do Centro de Capacitação do Adolescente de Americana, pertencente à Diaconia São Judas Tadeu.
+### Bem-vindo ao Sistema de Gestão Escolar desenvolvido para atender às necessidades do Centro de Capacitação do Adolescente de Americana, pertencente à Diaconia São Judas Tadeu.
 
 # Visão Geral
 Este projeto é uma solução completa de gestão escolar construída utilizando tecnologias modernas como Node.js, Express, EJS, Webpack e MongoDB como banco de dados. 
